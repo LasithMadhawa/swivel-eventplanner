@@ -1,4 +1,6 @@
-class UserModel {
+import 'package:equatable/equatable.dart';
+
+class UserModel extends Equatable {
   final String uid;
   final String email;
   final String? firstName;
@@ -7,7 +9,7 @@ class UserModel {
   final String? address;
   final String? profilePictureUrl;
 
-  UserModel({
+  const UserModel({
     required this.uid,
     required this.email,
     this.firstName,
@@ -62,4 +64,7 @@ class UserModel {
   bool isProfileComplete() {
     return firstName != null && lastName != null && phoneNumber != null && address != null && profilePictureUrl != null;
   }
+  
+  @override
+  List<Object?> get props => [uid, email, firstName, lastName, phoneNumber, address, profilePictureUrl];
 }

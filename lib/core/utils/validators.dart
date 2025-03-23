@@ -1,6 +1,13 @@
 import 'package:eventplanner/core/constants/strings.dart';
 
 class Validators {
+  static String? requiredValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return AppStrings.requiredField;
+    }
+    return null;
+  }
+
   static String? emailValidator(String? value) {
     if (value == null || value.isEmpty) {
       return AppStrings.requiredField;

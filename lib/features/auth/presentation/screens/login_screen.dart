@@ -1,5 +1,6 @@
 import 'package:eventplanner/core/constants/routes.dart';
 import 'package:eventplanner/core/constants/strings.dart';
+import 'package:eventplanner/core/utils/validators.dart';
 import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:eventplanner/features/auth/presentation/widgets/password_input.dart';
 import 'package:flutter/material.dart';
@@ -59,14 +60,20 @@ class LoginScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               TextFormField(
+                                key: const ValueKey('emailField'),
                                 controller: _emailController,
                                 decoration: const InputDecoration(
                                   prefixIcon: Icon(Icons.email_outlined),
                                   label: Text(AppStrings.emailLabel),
                                 ),
+                                validator: Validators.requiredValidator,
                               ),
                               const SizedBox(height: 12),
-                              PasswordInput(controller: _passwordController),
+                              PasswordInput(
+                                key: const ValueKey('passwordField'),
+                                controller: _passwordController,
+                                validator: Validators.requiredValidator,
+                              ),
                               const SizedBox(height: 10),
                               TextButton(
                                 onPressed: () {},
@@ -91,9 +98,13 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: FilledButton(
-                          onPressed: state is AuthLoading ? null : () {
-                            _submitForm(context);
-                          },
+                          key: const ValueKey('loginButton'),
+                          onPressed:
+                              state is AuthLoading
+                                  ? null
+                                  : () {
+                                    _submitForm(context);
+                                  },
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
