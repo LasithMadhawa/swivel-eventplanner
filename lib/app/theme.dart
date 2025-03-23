@@ -18,6 +18,12 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: FilledButton.styleFrom(
+        textStyle: const TextStyle().copyWith(fontWeight: FontWeight.w500),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      ),
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         textStyle: const TextStyle().copyWith(fontWeight: FontWeight.w500),
