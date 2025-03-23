@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "564501308576",
+    "project_id": "swivel-event-planner-43bc7",
+    "storage_bucket": "swivel-event-planner-43bc7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564501308576:android:f7aecf71360d5f809455c5",
+        "android_client_info": {
+          "package_name": "dev.lasith.eventplanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChBaXnfOi6Q-sycT-04Y63f8TQ_-zKULc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
