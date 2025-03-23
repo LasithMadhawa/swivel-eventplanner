@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:eventplanner/core/errors/failures.dart';
-import 'package:eventplanner/core/models/user_model.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/models/user_model.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 

@@ -1,4 +1,4 @@
-import 'package:eventplanner/core/constants/strings.dart';
+import '../../../../core/constants/strings.dart';
 import 'package:flutter/material.dart';
 
 class PasswordInput extends StatefulWidget {

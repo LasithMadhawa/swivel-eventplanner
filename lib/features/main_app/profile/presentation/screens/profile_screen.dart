@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:eventplanner/core/models/user_model.dart';
-import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:eventplanner/features/main_app/profile/presentation/blocs/profile/profile_bloc.dart';
-import 'package:eventplanner/features/user/data/repositories/user_repository.dart';
+import '../../../../../core/models/user_model.dart';
+import '../../../../auth/presentation/bloc/auth_bloc.dart';
+import '../blocs/profile/profile_bloc.dart';
+import '../../../../user/data/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';

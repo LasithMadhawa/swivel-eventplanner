@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:eventplanner/core/errors/failures.dart';
-import 'package:eventplanner/core/models/user_model.dart';
-import 'package:eventplanner/features/auth/data/repositories/auth_repository.dart';
-import 'package:eventplanner/features/user/data/repositories/user_repository.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/models/user_model.dart';
+import '../../data/repositories/auth_repository.dart';
+import '../../../user/data/repositories/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

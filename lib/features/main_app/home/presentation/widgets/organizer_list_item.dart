@@ -1,4 +1,4 @@
-import 'package:eventplanner/core/models/organizer_model.dart';
+import '../../../../../core/models/organizer_model.dart';
 import 'package:flutter/material.dart';
 
 class OrganizerListItem extends StatelessWidget {

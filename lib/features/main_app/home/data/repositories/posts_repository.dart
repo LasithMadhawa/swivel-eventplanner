@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:eventplanner/core/models/comment_model.dart';
-import 'package:eventplanner/core/models/post_model.dart';
+import '../../../../../core/models/comment_model.dart';
+import '../../../../../core/models/post_model.dart';
 
 class PostsRepository {
   Future<List<PostModel>> getPosts() async {

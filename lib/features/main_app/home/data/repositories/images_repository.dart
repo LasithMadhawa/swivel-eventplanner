@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:eventplanner/core/models/image_model.dart';
+import '../../../../../core/models/image_model.dart';
 
 class ImagesRepository {
   Future<List<ImageModel>> getImages() async {

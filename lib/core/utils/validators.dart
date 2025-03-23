@@ -1,4 +1,4 @@
-import 'package:eventplanner/core/constants/strings.dart';
+import '../constants/strings.dart';
 
 class Validators {
   static String? requiredValidator(String? value) {

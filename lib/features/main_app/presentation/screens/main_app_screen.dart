@@ -1,10 +1,10 @@
-import 'package:eventplanner/core/constants/routes.dart';
-import 'package:eventplanner/core/models/user_model.dart';
-import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:eventplanner/features/main_app/home/data/repositories/images_repository.dart';
-import 'package:eventplanner/features/main_app/home/data/repositories/organizers_repository.dart';
-import 'package:eventplanner/features/main_app/home/presentation/blocs/images/images_bloc.dart';
-import 'package:eventplanner/features/main_app/home/presentation/blocs/organizers/organizers_bloc.dart';
+import '../../../../core/constants/routes.dart';
+import '../../../../core/models/user_model.dart';
+import '../../../auth/presentation/bloc/auth_bloc.dart';
+import '../../home/data/repositories/images_repository.dart';
+import '../../home/data/repositories/organizers_repository.dart';
+import '../../home/presentation/blocs/images/images_bloc.dart';
+import '../../home/presentation/blocs/organizers/organizers_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

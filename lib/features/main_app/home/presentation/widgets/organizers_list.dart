@@ -1,5 +1,5 @@
-import 'package:eventplanner/features/main_app/home/presentation/blocs/organizers/organizers_bloc.dart';
-import 'package:eventplanner/features/main_app/home/presentation/widgets/organizer_list_item.dart';
+import '../blocs/organizers/organizers_bloc.dart';
+import 'organizer_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
