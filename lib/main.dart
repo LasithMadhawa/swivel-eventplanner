@@ -3,6 +3,7 @@ import 'package:eventplanner/app/theme.dart';
 import 'package:eventplanner/features/auth/data/repositories/auth_repository.dart';
 import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:eventplanner/features/main_app/home/data/repositories/images_repository.dart';
+import 'package:eventplanner/features/main_app/home/data/repositories/organizers_repository.dart';
 import 'package:eventplanner/features/user/data/repositories/user_repository.dart';
 import 'package:eventplanner/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(create: (context) => AuthRepository()),
         RepositoryProvider(create: (context) => UserRepository()),
         RepositoryProvider(create: (context) => ImagesRepository()),
+        RepositoryProvider(create: (context) => OrganizersRepository()),
       ],
       child: MultiBlocProvider(
         providers: [

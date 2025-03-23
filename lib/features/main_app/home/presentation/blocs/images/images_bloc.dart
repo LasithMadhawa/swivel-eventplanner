@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:eventplanner/core/models/image_model.dart';
 import 'package:eventplanner/features/main_app/home/data/repositories/images_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'images_event.dart';
 part 'images_state.dart';

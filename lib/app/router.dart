@@ -65,14 +65,14 @@ class AppRouter {
 }
 
 class SlideTransitionPage<T> extends CustomTransitionPage<T> {
-  SlideTransitionPage({super.key, required super.child})
+  SlideTransitionPage({super.key,  slidingDirection, required super.child})
     : super(
-        transitionDuration: const Duration(milliseconds: 500),
+        transitionDuration: const Duration(milliseconds: 100),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           // Add a curve to the animation
           final curvedAnimation = CurvedAnimation(
             parent: animation,
-            curve: Curves.easeInOut,
+            curve: Curves.easeInOutCubic,
           );
           return SlideTransition(
             position: Tween<Offset>(
