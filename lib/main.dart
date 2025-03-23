@@ -4,6 +4,8 @@ import 'package:eventplanner/features/auth/data/repositories/auth_repository.dar
 import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:eventplanner/features/main_app/home/data/repositories/images_repository.dart';
 import 'package:eventplanner/features/main_app/home/data/repositories/organizers_repository.dart';
+import 'package:eventplanner/features/main_app/home/data/repositories/posts_repository.dart';
+import 'package:eventplanner/features/main_app/home/presentation/blocs/posts/posts_bloc.dart';
 import 'package:eventplanner/features/user/data/repositories/user_repository.dart';
 import 'package:eventplanner/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(create: (context) => UserRepository()),
         RepositoryProvider(create: (context) => ImagesRepository()),
         RepositoryProvider(create: (context) => OrganizersRepository()),
+        RepositoryProvider(create: (context) => PostsRepository()),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -38,6 +41,11 @@ class MyApp extends StatelessWidget {
                   authRepository: context.read<AuthRepository>(),
                   userRepository: context.read<UserRepository>(),
                 ),
+          ),
+          BlocProvider(
+            create:
+                (context) =>
+                    PostsBloc(context.read<PostsRepository>()),
           ),
         ],
         child: BlocListener<AuthBloc, AuthState>(

@@ -1,8 +1,11 @@
 import 'package:eventplanner/core/constants/routes.dart';
+import 'package:eventplanner/core/models/post_model.dart';
 import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:eventplanner/features/auth/presentation/screens/login_screen.dart';
 import 'package:eventplanner/features/auth/presentation/screens/signup_screen.dart';
+import 'package:eventplanner/features/main_app/home/presentation/screens/comments_screen.dart';
 import 'package:eventplanner/features/main_app/home/presentation/screens/home_screen.dart';
+import 'package:eventplanner/features/main_app/home/presentation/screens/posts_screen.dart';
 import 'package:eventplanner/features/main_app/presentation/screens/main_app_screen.dart';
 import 'package:eventplanner/features/main_app/profile/presentation/screens/profile_screen.dart';
 import 'package:eventplanner/features/onboarding/presentation/screens/profile_picture_screen.dart';
@@ -31,8 +34,7 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.userDetails,
         pageBuilder:
-            (context, state) =>
-                SlideTransitionPage(child: UserDetailsScreen()),
+            (context, state) => SlideTransitionPage(child: UserDetailsScreen()),
       ),
       ShellRoute(
         builder: (context, state, child) => MainAppScreen(child: child),
@@ -47,25 +49,43 @@ class AppRouter {
           ),
         ],
       ),
+      GoRoute(
+        path: AppRoutes.posts,
+        builder: (context, state) => const PostsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.comments,
+        builder: (context, state) {
+          final post = state.extra as PostModel;
+          return CommentsScreen(post: post);
+        },
+      ),
     ],
     redirect: (context, state) {
       final authState = context.read<AuthBloc>().state;
       final isLoggedIn = authState is Authenticated;
-      final isProfileComplete = isLoggedIn && authState.user.isProfileComplete();
-      final isOnboardingRoute = state.matchedLocation.startsWith(AppRoutes.profilePicture) || 
-                               state.matchedLocation.startsWith(AppRoutes.userDetails);
+      final isProfileComplete =
+          isLoggedIn && authState.user.isProfileComplete();
+      final isOnboardingRoute =
+          state.matchedLocation.startsWith(AppRoutes.profilePicture) ||
+          state.matchedLocation.startsWith(AppRoutes.userDetails);
       final isLoginRoute = state.matchedLocation == AppRoutes.login;
 
-      if (!isLoggedIn && state.matchedLocation != AppRoutes.signup) return AppRoutes.login;
-      if (isLoggedIn && !isProfileComplete && !isOnboardingRoute) return AppRoutes.profilePicture;
-      if (isLoggedIn && isProfileComplete && (isOnboardingRoute || isLoginRoute)) return AppRoutes.home;
+      if (!isLoggedIn && state.matchedLocation != AppRoutes.signup)
+        return AppRoutes.login;
+      if (isLoggedIn && !isProfileComplete && !isOnboardingRoute)
+        return AppRoutes.profilePicture;
+      if (isLoggedIn &&
+          isProfileComplete &&
+          (isOnboardingRoute || isLoginRoute))
+        return AppRoutes.home;
       return null;
     },
   );
 }
 
 class SlideTransitionPage<T> extends CustomTransitionPage<T> {
-  SlideTransitionPage({super.key,  slidingDirection, required super.child})
+  SlideTransitionPage({super.key, slidingDirection, required super.child})
     : super(
         transitionDuration: const Duration(milliseconds: 100),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {

@@ -2,7 +2,9 @@ import 'package:eventplanner/core/constants/routes.dart';
 import 'package:eventplanner/core/models/user_model.dart';
 import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:eventplanner/features/main_app/home/data/repositories/images_repository.dart';
+import 'package:eventplanner/features/main_app/home/data/repositories/organizers_repository.dart';
 import 'package:eventplanner/features/main_app/home/presentation/blocs/images/images_bloc.dart';
+import 'package:eventplanner/features/main_app/home/presentation/blocs/organizers/organizers_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -13,8 +15,16 @@ class MainAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ImagesBloc(context.read<ImagesRepository>())..add(FetchImages()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (context) =>
+                  ImagesBloc(context.read<ImagesRepository>())
+                    ..add(FetchImages()),
+        ),
+        BlocProvider(create: (context) => OrganizersBloc(context.read<OrganizersRepository>())..add(FetchOrganizers())),
+      ],
       child: Scaffold(
         drawer: _buildDrawer(context),
         bottomNavigationBar: _buildBottomNavBar(context),
