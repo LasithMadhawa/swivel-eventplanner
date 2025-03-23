@@ -9,13 +9,39 @@ import 'package:eventplanner/features/main_app/home/presentation/blocs/posts/pos
 import 'package:eventplanner/features/user/data/repositories/user_repository.dart';
 import 'package:eventplanner/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final fcmToken = await FirebaseMessaging.instance.getToken(); // Get FCM token
+  requestNotificationPermissions(); // Request permission for notifications
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  debugPrint("FCM Token: $fcmToken");
   runApp(MyApp());
+}
+
+Future<void> requestNotificationPermissions() async {
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
+  if (settings.authorizationStatus == AuthorizationStatus.denied) {
+    debugPrint("Notification permission denied.");
+  } else {
+    debugPrint("Notification permission granted.");
+  }
 }
 
 class MyApp extends StatelessWidget {
