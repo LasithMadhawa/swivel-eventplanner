@@ -18,6 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignUpRequested>(_onSignUpRequested);
     on<SignInRequested>(_onSignInRequested);
     on<ProfileUpdated>(_onProfileUpdated);
+    on<SignOutRequested>(_onSignOutRequested);
   }
 
   _onAuthCheckRequest(AuthCheckRequested event, Emitter<AuthState> emit) async {
@@ -95,6 +96,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     } catch (e) {
       emit(const AuthFailure(message: 'Profile update failed. Please try again.'));
+    }
+  }
+
+  Future<void> _onSignOutRequested(
+    SignOutRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+    try {
+      await authRepository.signOut();
+      emit(Unauthenticated());
+    } catch (e) {
+      emit(const AuthFailure(message: 'Sign out failed. Please try again.'));
     }
   }
 }

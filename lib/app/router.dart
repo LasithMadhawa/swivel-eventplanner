@@ -2,6 +2,9 @@ import 'package:eventplanner/core/constants/routes.dart';
 import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:eventplanner/features/auth/presentation/screens/login_screen.dart';
 import 'package:eventplanner/features/auth/presentation/screens/signup_screen.dart';
+import 'package:eventplanner/features/main_app/home/presentation/screens/home_screen.dart';
+import 'package:eventplanner/features/main_app/presentation/screens/main_app_screen.dart';
+import 'package:eventplanner/features/main_app/profile/presentation/screens/profile_screen.dart';
 import 'package:eventplanner/features/onboarding/presentation/screens/profile_picture_screen.dart';
 import 'package:eventplanner/features/onboarding/presentation/screens/user_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +34,19 @@ class AppRouter {
             (context, state) =>
                 SlideTransitionPage(child: UserDetailsScreen()),
       ),
+      ShellRoute(
+        builder: (context, state, child) => MainAppScreen(child: child),
+        routes: [
+          GoRoute(
+            path: AppRoutes.home,
+            builder: (context, state) => const HomeScreen(),
+          ),
+          GoRoute(
+            path: AppRoutes.profile,
+            builder: (context, state) => const ProfileScreen(),
+          ),
+        ],
+      ),
     ],
     redirect: (context, state) {
       final authState = context.read<AuthBloc>().state;
@@ -38,10 +54,11 @@ class AppRouter {
       final isProfileComplete = isLoggedIn && authState.user.isProfileComplete();
       final isOnboardingRoute = state.matchedLocation.startsWith(AppRoutes.profilePicture) || 
                                state.matchedLocation.startsWith(AppRoutes.userDetails);
+      final isLoginRoute = state.matchedLocation == AppRoutes.login;
 
       if (!isLoggedIn && state.matchedLocation != AppRoutes.signup) return AppRoutes.login;
       if (isLoggedIn && !isProfileComplete && !isOnboardingRoute) return AppRoutes.profilePicture;
-      if (isLoggedIn && isProfileComplete && isOnboardingRoute) return AppRoutes.home;
+      if (isLoggedIn && isProfileComplete && (isOnboardingRoute || isLoginRoute)) return AppRoutes.home;
       return null;
     },
   );

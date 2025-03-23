@@ -21,7 +21,7 @@ class UserModel {
     return UserModel(
       uid: map["uid"],
       email: map["email"],
-      firstName: map["firstname"],
+      firstName: map["firstName"],
       lastName: map["lastName"],
       phoneNumber: map["phoneNumber"],
       address: map["address"],
