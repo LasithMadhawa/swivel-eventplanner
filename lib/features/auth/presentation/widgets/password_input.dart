@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class PasswordInput extends StatefulWidget {
   final TextEditingController? controller;
   final String? label;
-  const PasswordInput({super.key, this.controller, this.label});
+  final String? Function(String?)? validator;
+  const PasswordInput({super.key, this.controller, this.label, this.validator});
 
   @override
   State<PasswordInput> createState() => _PasswordInputState();
@@ -19,7 +20,7 @@ class _PasswordInputState extends State<PasswordInput> {
       controller: widget.controller,
       obscureText: _obscurePassword,
       decoration: InputDecoration(
-        label: Text(widget.label ?? AppStrings.passwordLabel),
+        labelText: widget.label ?? AppStrings.passwordLabel,
         prefixIcon: const Icon(Icons.lock_outline),
         suffixIcon: IconButton(
           onPressed: () {
@@ -33,6 +34,7 @@ class _PasswordInputState extends State<PasswordInput> {
                   : const Icon(Icons.visibility_outlined),
         ),
       ),
+      validator: widget.validator,
     );
   }
 }
