@@ -9,9 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class MainAppScreen extends StatelessWidget {
+class MainAppScreen extends StatefulWidget {
   final Widget child;
   const MainAppScreen({super.key, required this.child});
+
+  @override
+  State<MainAppScreen> createState() => _MainAppScreenState();
+}
+
+class _MainAppScreenState extends State<MainAppScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +33,14 @@ class MainAppScreen extends StatelessWidget {
         BlocProvider(create: (context) => OrganizersBloc(context.read<OrganizersRepository>())..add(FetchOrganizers())),
       ],
       child: Scaffold(
+        key: _scaffoldKey,
         drawer: _buildDrawer(context),
         bottomNavigationBar: _buildBottomNavBar(context),
-        body: child,
-        // appBar: AppBar(),
+        body: widget.child,
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
+        floatingActionButton: IconButton(onPressed: () {
+          _scaffoldKey.currentState?.openDrawer();
+        }, icon: const Icon(Icons.menu, color: Colors.white,),)
       ),
     );
   }

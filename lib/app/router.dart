@@ -71,14 +71,17 @@ class AppRouter {
           state.matchedLocation.startsWith(AppRoutes.userDetails);
       final isLoginRoute = state.matchedLocation == AppRoutes.login;
 
-      if (!isLoggedIn && state.matchedLocation != AppRoutes.signup)
+      if (!isLoggedIn && state.matchedLocation != AppRoutes.signup) {
         return AppRoutes.login;
-      if (isLoggedIn && !isProfileComplete && !isOnboardingRoute)
+      }
+      if (isLoggedIn && !isProfileComplete && !isOnboardingRoute) {
         return AppRoutes.profilePicture;
+      }
       if (isLoggedIn &&
           isProfileComplete &&
-          (isOnboardingRoute || isLoginRoute))
+          (isOnboardingRoute || isLoginRoute)) {
         return AppRoutes.home;
+      }
       return null;
     },
   );

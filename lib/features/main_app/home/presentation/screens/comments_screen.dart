@@ -39,11 +39,16 @@ class CommentsScreen extends StatelessWidget {
                         ..add(FetchComments(postId: post.id!)),
               child: BlocBuilder<CommentsBloc, CommentsState>(
                 builder: (context, state) {
+                  if (state is CommentsLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
                   if (state is CommentsLoaded) {
                     return ListView.builder(
                       itemCount: state.comments.length,
                       shrinkWrap: true,
-                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      padding: const EdgeInsets.symmetric(vertical: 0),
                       itemBuilder: (context, index) {
                         return Container(
                           padding: const EdgeInsets.symmetric(
