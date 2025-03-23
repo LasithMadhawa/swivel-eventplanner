@@ -8,6 +8,16 @@ class Validators {
     return null;
   }
 
+  static String? nameValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return AppStrings.requiredField;
+    }
+    if (!RegExp(r'^[A-Za-z]{3,10}$').hasMatch(value)) {
+      return AppStrings.invalidName;
+    }
+    return null;
+  }
+
   static String? emailValidator(String? value) {
     if (value == null || value.isEmpty) {
       return AppStrings.requiredField;
@@ -22,7 +32,7 @@ class Validators {
     if (value == null || value.isEmpty) {
       return AppStrings.requiredField;
     }
-    if (value.length < 6) {
+    if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$').hasMatch(value)) {
       return AppStrings.weakPassword;
     }
     return null;

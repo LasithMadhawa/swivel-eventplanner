@@ -20,5 +20,6 @@ class AppStrings {
   static const String passwordMatchError = 'Passwords do not match';
   static const String requiredField = "* Required";
   static const String invalidEmail = "Invalid email";
-  static const String weakPassword = "Password is too weak";
+  static const String weakPassword = "Password is too weak. Password must contain at least one uppercase letter, one lowercase letter, one number, and be at least 6 characters long.";
+  static const String invalidName = "Input must contain only alphabetic characters and be between 3 to 10 characters long";
 }

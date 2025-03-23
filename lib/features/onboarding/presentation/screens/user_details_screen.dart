@@ -1,3 +1,5 @@
+import 'package:eventplanner/core/utils/validators.dart';
+
 import '../../../../core/constants/routes.dart';
 import '../../../../core/constants/strings.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
@@ -63,6 +65,7 @@ class UserDetailsScreen extends StatelessWidget {
                                   decoration: const InputDecoration(
                                     labelText: "First Name",
                                   ),
+                                  validator: Validators.nameValidator,
                                 ),
                                 const SizedBox(height: 12.0),
                                 TextFormField(
@@ -70,6 +73,7 @@ class UserDetailsScreen extends StatelessWidget {
                                   decoration: const InputDecoration(
                                     labelText: "Last Name",
                                   ),
+                                  validator: Validators.nameValidator
                                 ),
                                 const SizedBox(height: 12.0),
                                 TextFormField(
@@ -88,6 +92,7 @@ class UserDetailsScreen extends StatelessWidget {
                                   decoration: const InputDecoration(
                                     labelText: "Phone Number",
                                   ),
+                                  validator: Validators.requiredValidator,
                                 ),
                                 const SizedBox(height: 12.0),
                                 TextFormField(
@@ -95,6 +100,7 @@ class UserDetailsScreen extends StatelessWidget {
                                   decoration: const InputDecoration(
                                     labelText: "Mailing Address",
                                   ),
+                                  validator: Validators.requiredValidator,
                                 ),
                               ],
                             ),

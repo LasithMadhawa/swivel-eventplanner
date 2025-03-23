@@ -102,19 +102,12 @@ class SignupScreen extends StatelessWidget {
                                   : () {
                                     _submitForm(context);
                                   },
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(AppStrings.signUpButton),
-                              const SizedBox(width: 8),
-                              if (state is AuthLoading)
-                                const SizedBox(
-                                  width: 10,
-                                  height: 10,
-                                  child: CircularProgressIndicator(strokeWidth: 2,),
-                                )
-                              else
-                                const Icon(Icons.arrow_forward),
+                               Text(AppStrings.signUpButton),
+                               SizedBox(width: 8),
+                                 Icon(Icons.arrow_forward),
                             ],
                           ),
                         ),
