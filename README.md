@@ -28,18 +28,19 @@ A Flutter-based event planning application with Firebase integration, built usin
     
         flutter pub get  
 
-3. Configure Firebase:
+3. Configure Firebase: (If you have the google-service.json file skip this step)
     - Add the google-services.json (Android) and GoogleService-Info.plist (iOS) files in the appropriate folders.
     - Enable Firestore, Firebase Authentication, and Firebase Storage in your Firebase project.
     
-4. Generate `firebase_options.dart`
+4. Generate `firebase_options.dart` (If you have the firebase_options.dart file skip this step)
     
     The `firebase_options.dart` file is required but is not committed to version control for security reasons. Generate it using:
     
         flutterfire configure
 
-    
-5. Run the application:
+5. Make sure the `google-services.json` file is available in `/android/app/google-services.json`, and the `firebase_options.dart` file in `/lib/firebase_options.dart`.
+
+6. Run the application:
 
         flutter run  
         
