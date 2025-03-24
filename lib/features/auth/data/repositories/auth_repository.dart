@@ -11,6 +11,7 @@ class AuthRepository {
 
   Future<User?> get currentUser async => _firebaseAuth.currentUser;
 
+  // Firebase sign in with email/password
   Future<User> signInWithEmailAndPassword({
     required String email,
     required String password,
@@ -28,6 +29,7 @@ class AuthRepository {
     }
   }
 
+// Firebase sign up with email/password
   Future<User> signUpWithEmailAndPassword({
     required String email,
     required String password,
@@ -45,6 +47,7 @@ class AuthRepository {
     }
   }
 
+  // Firebase sign out
   Future<void> signOut() async {
     try {
       await _firebaseAuth.signOut();
@@ -54,6 +57,7 @@ class AuthRepository {
   }
 }
 
+// Mapping error messagen from Firebase
 String _mapAuthError(String code) {
     switch (code) {
       case 'invalid-credential':

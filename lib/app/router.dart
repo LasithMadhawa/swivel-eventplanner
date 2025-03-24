@@ -17,6 +17,9 @@ import 'package:go_router/go_router.dart';
 class AppRouter {
   final GoRouter config = GoRouter(
     routes: [
+
+      // Authentication routes
+
       GoRoute(
         path: AppRoutes.login,
         builder: (context, state) => LoginScreen(),
@@ -25,6 +28,9 @@ class AppRouter {
         path: AppRoutes.signup,
         builder: (context, state) => SignupScreen(),
       ),
+
+      // Onboarding routes
+
       GoRoute(
         path: AppRoutes.profilePicture,
         pageBuilder:
@@ -36,6 +42,9 @@ class AppRouter {
         pageBuilder:
             (context, state) => SlideTransitionPage(child: UserDetailsScreen()),
       ),
+
+      // Main app routes
+
       ShellRoute(
         builder: (context, state, child) => MainAppScreen(child: child),
         routes: [
@@ -49,6 +58,9 @@ class AppRouter {
           ),
         ],
       ),
+
+      // Other routes
+
       GoRoute(
         path: AppRoutes.posts,
         builder: (context, state) => const PostsScreen(),
@@ -71,12 +83,15 @@ class AppRouter {
           state.matchedLocation.startsWith(AppRoutes.userDetails);
       final isLoginRoute = state.matchedLocation == AppRoutes.login;
 
+      // Redirect unauthenticated user to authentication flow
       if (!isLoggedIn && state.matchedLocation != AppRoutes.signup) {
         return AppRoutes.login;
       }
+      // Redirect incomplete profiles to onboarding flow
       if (isLoggedIn && !isProfileComplete && !isOnboardingRoute) {
         return AppRoutes.profilePicture;
       }
+      // Redirect to main app after authentication
       if (isLoggedIn &&
           isProfileComplete &&
           (isOnboardingRoute || isLoginRoute)) {
