@@ -14,6 +14,7 @@ class UserRepository {
   })  : _firestore = firestore ?? FirebaseFirestore.instance,
         _storage = storage ?? FirebaseStorage.instance;
 
+  // Get user by uid from firestore
   Future<UserModel> getUser(String userId) async {
     try {
       final doc = await _firestore.collection('users').doc(userId).get();
@@ -26,6 +27,7 @@ class UserRepository {
     }
   }
 
+  // Save user in firestore
   Future<void> saveUser(UserModel user) async {
     try {
       await _firestore.collection('users').doc(user.uid).set(
@@ -39,6 +41,7 @@ class UserRepository {
     }
   }
 
+  // Upload image file
   Future<String> uploadProfileImage(String userId, XFile image) async {
     try {
       final ref = _storage.ref().child('profile_pictures/$userId');
@@ -46,20 +49,6 @@ class UserRepository {
       return await ref.getDownloadURL();
     } catch (e) {
       throw Exception('Image upload failed: ${e.toString()}');
-    }
-  }
-
-  Future<bool> isProfileComplete(String userId) async {
-    try {
-      final user = await getUser(userId);
-      return user.firstName != null &&
-          user.lastName != null &&
-          user.phoneNumber != null&&
-          user.address != null;
-    } on UserNotFoundFailure {
-      return false;
-    } catch (e) {
-      return false;
     }
   }
 }

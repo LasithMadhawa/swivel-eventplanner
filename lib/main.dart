@@ -1,3 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'app/router.dart';
 import 'app/theme.dart';
 import 'features/auth/data/repositories/auth_repository.dart';
@@ -8,10 +13,6 @@ import 'features/main_app/home/data/repositories/posts_repository.dart';
 import 'features/main_app/home/presentation/blocs/posts/posts_bloc.dart';
 import 'features/user/data/repositories/user_repository.dart';
 import 'firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {

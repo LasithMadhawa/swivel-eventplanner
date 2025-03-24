@@ -1,4 +1,4 @@
-import 'package:eventplanner/core/utils/validators.dart';
+import '../../../../core/utils/validators.dart';
 
 import '../../../../core/constants/routes.dart';
 import '../../../../core/constants/strings.dart';

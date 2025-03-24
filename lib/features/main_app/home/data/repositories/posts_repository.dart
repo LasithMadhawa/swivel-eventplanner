@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:eventplanner/core/constants/strings.dart';
 import '../../../../../core/models/comment_model.dart';
 import '../../../../../core/models/post_model.dart';
 
 class PostsRepository {
   Future<List<PostModel>> getPosts() async {
     try {
-      final response = await Dio().get("https://jsonplaceholder.typicode.com/posts");
+      final response = await Dio().get("${AppStrings.baseUrl}/posts");
       return PostModel.listFromJson((response.data as List).toList());
       
     } on DioException catch (e) {
@@ -17,7 +18,7 @@ class PostsRepository {
 
   Future<List<CommentModel>> getComments(int postId) async {
     try {
-      final response = await Dio().get("https://jsonplaceholder.typicode.com/comments?postId=$postId");
+      final response = await Dio().get("${AppStrings.baseUrl}/comments?postId=$postId");
       return CommentModel.listFromJson((response.data as List).toList());
       
     } on DioException catch (e) {
