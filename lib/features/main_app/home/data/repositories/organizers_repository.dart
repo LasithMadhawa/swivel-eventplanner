@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:eventplanner/core/models/organizer_model.dart';
+import '../../../../../core/models/organizer_model.dart';
 
 class OrganizersRepository {
   Future<List<OrganizerModel>> getOrganizers() async {

@@ -1,8 +1,8 @@
-import 'package:eventplanner/core/constants/routes.dart';
-import 'package:eventplanner/features/main_app/home/presentation/blocs/posts/posts_bloc.dart';
-import 'package:eventplanner/features/main_app/home/presentation/widgets/horizontal_image_list.dart';
-import 'package:eventplanner/features/main_app/home/presentation/widgets/image_carousel.dart';
-import 'package:eventplanner/features/main_app/home/presentation/widgets/organizers_list.dart';
+import '../../../../../core/constants/routes.dart';
+import '../blocs/posts/posts_bloc.dart';
+import '../widgets/horizontal_image_list.dart';
+import '../widgets/image_carousel.dart';
+import '../widgets/organizers_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

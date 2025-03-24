@@ -1,4 +1,4 @@
-import 'package:eventplanner/core/errors/failures.dart';
+import '../../../../core/errors/failures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository {

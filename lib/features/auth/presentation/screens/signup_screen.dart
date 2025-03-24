@@ -1,8 +1,8 @@
-import 'package:eventplanner/core/constants/routes.dart';
-import 'package:eventplanner/core/constants/strings.dart';
-import 'package:eventplanner/core/utils/validators.dart';
-import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:eventplanner/features/auth/presentation/widgets/password_input.dart';
+import '../../../../core/constants/routes.dart';
+import '../../../../core/constants/strings.dart';
+import '../../../../core/utils/validators.dart';
+import '../bloc/auth_bloc.dart';
+import '../widgets/password_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -102,19 +102,12 @@ class SignupScreen extends StatelessWidget {
                                   : () {
                                     _submitForm(context);
                                   },
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(AppStrings.signUpButton),
-                              const SizedBox(width: 8),
-                              if (state is AuthLoading)
-                                const SizedBox(
-                                  width: 10,
-                                  height: 10,
-                                  child: CircularProgressIndicator(strokeWidth: 2,),
-                                )
-                              else
-                                const Icon(Icons.arrow_forward),
+                               Text(AppStrings.signUpButton),
+                               SizedBox(width: 8),
+                                 Icon(Icons.arrow_forward),
                             ],
                           ),
                         ),

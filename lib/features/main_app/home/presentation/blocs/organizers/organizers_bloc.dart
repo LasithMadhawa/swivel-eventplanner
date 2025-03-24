@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:eventplanner/core/models/organizer_model.dart';
-import 'package:eventplanner/features/main_app/home/data/repositories/organizers_repository.dart';
+import '../../../../../../core/models/organizer_model.dart';
+import '../../../data/repositories/organizers_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'organizers_event.dart';

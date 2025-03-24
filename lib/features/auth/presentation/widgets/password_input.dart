@@ -1,4 +1,4 @@
-import 'package:eventplanner/core/constants/strings.dart';
+import '../../../../core/constants/strings.dart';
 import 'package:flutter/material.dart';
 
 class PasswordInput extends StatefulWidget {
@@ -21,6 +21,7 @@ class _PasswordInputState extends State<PasswordInput> {
       obscureText: _obscurePassword,
       decoration: InputDecoration(
         labelText: widget.label ?? AppStrings.passwordLabel,
+        errorMaxLines: 5,
         prefixIcon: const Icon(Icons.lock_outline),
         suffixIcon: IconButton(
           onPressed: () {

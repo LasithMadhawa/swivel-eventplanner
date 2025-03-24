@@ -1,8 +1,10 @@
-import 'package:eventplanner/core/constants/routes.dart';
-import 'package:eventplanner/core/constants/strings.dart';
-import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:eventplanner/features/onboarding/presentation/blocs/update_user_details/update_user_details_bloc.dart';
-import 'package:eventplanner/features/user/data/repositories/user_repository.dart';
+import 'package:eventplanner/core/utils/validators.dart';
+
+import '../../../../core/constants/routes.dart';
+import '../../../../core/constants/strings.dart';
+import '../../../auth/presentation/bloc/auth_bloc.dart';
+import '../blocs/update_user_details/update_user_details_bloc.dart';
+import '../../../user/data/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -63,6 +65,7 @@ class UserDetailsScreen extends StatelessWidget {
                                   decoration: const InputDecoration(
                                     labelText: "First Name",
                                   ),
+                                  validator: Validators.nameValidator,
                                 ),
                                 const SizedBox(height: 12.0),
                                 TextFormField(
@@ -70,6 +73,7 @@ class UserDetailsScreen extends StatelessWidget {
                                   decoration: const InputDecoration(
                                     labelText: "Last Name",
                                   ),
+                                  validator: Validators.nameValidator
                                 ),
                                 const SizedBox(height: 12.0),
                                 TextFormField(
@@ -88,6 +92,7 @@ class UserDetailsScreen extends StatelessWidget {
                                   decoration: const InputDecoration(
                                     labelText: "Phone Number",
                                   ),
+                                  validator: Validators.requiredValidator,
                                 ),
                                 const SizedBox(height: 12.0),
                                 TextFormField(
@@ -95,6 +100,7 @@ class UserDetailsScreen extends StatelessWidget {
                                   decoration: const InputDecoration(
                                     labelText: "Mailing Address",
                                   ),
+                                  validator: Validators.requiredValidator,
                                 ),
                               ],
                             ),

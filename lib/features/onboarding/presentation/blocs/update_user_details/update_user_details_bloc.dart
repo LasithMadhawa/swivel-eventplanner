@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:eventplanner/core/models/user_model.dart';
-import 'package:eventplanner/features/user/data/repositories/user_repository.dart';
+import '../../../../../core/models/user_model.dart';
+import '../../../../user/data/repositories/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'update_user_details_event.dart';

@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:eventplanner/core/constants/routes.dart';
-import 'package:eventplanner/core/constants/strings.dart';
-import 'package:eventplanner/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:eventplanner/features/onboarding/presentation/blocs/update_profile_picture/update_profile_picture_bloc.dart';
-import 'package:eventplanner/features/user/data/repositories/user_repository.dart';
+import '../../../../core/constants/routes.dart';
+import '../../../../core/constants/strings.dart';
+import '../../../auth/presentation/bloc/auth_bloc.dart';
+import '../blocs/update_profile_picture/update_profile_picture_bloc.dart';
+import '../../../user/data/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

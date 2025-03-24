@@ -1,6 +1,6 @@
-import 'package:eventplanner/core/models/post_model.dart';
-import 'package:eventplanner/features/main_app/home/data/repositories/posts_repository.dart';
-import 'package:eventplanner/features/main_app/home/presentation/blocs/comments/comments_bloc.dart';
+import '../../../../../core/models/post_model.dart';
+import '../../data/repositories/posts_repository.dart';
+import '../blocs/comments/comments_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
